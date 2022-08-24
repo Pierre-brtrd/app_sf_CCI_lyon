@@ -39,6 +39,38 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Find latest post with a limit
+     *
+     * @param integer $limit
+     * @return array
+     */
+    public function findLatestArticleWithLimit(int $limit): array
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a', 'u', 'i')
+            ->join('a.user', 'u')
+            ->leftJoin('a.articleImages', 'i')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findSearch(): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a', 'c', 'u', 'i', 'co')
+            ->leftJoin('a.categories', 'c')
+            ->leftJoin('a.comments', 'co')
+            ->Join('a.user', 'u')
+            ->leftJoin('a.articleImages', 'i')
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
     //    /**
     //     * @return Article[] Returns an array of Article objects
     //     */

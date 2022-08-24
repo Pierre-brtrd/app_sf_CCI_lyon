@@ -1,0 +1,11 @@
+include:
+  - UserFixtures.yaml
+  - TagFixtures.yaml
+
+App\Entity\Article:
+  article_{1..50}:
+    titre: "<words(2, true)>"
+    content: "<generateLoremDesc()>"
+    user: "@userAdmin"
+    categories: "<randomElements(@categorie_{1..10}, 3)>"
+    createdAt: "<generateDate()>"

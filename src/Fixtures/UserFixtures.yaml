@@ -1,0 +1,10 @@
+# On définit le namespace de l'entity que l'on veut créer
+App\Entity\User:
+  userAdmin:
+    email: "admin@test.com"
+    password: "<hashPassword('Test1234')>"
+    prenom: "Alice"
+    nom: "Fixtures"
+    address: "XX rue de test"
+    zipCode: "73000"
+    ville: "Chambéry"

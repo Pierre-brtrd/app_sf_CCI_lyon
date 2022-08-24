@@ -1,0 +1,6 @@
+{{ form_start(form, {'attr': {'class': 'form-filter card p-3' } }) }}
+{{ form_row(form.query) }}
+<h3 class="mb-2">Catégorie</h3>
+{{ form_row(form.categories) }}
+<button class="btn btn-primary w-100 btn-filter-form" type="submit">Filtrer</button>
+{{ form_end(form) }}

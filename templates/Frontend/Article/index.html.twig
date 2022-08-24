@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Liste des article |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<div class="row">
+			<div class="col-md-3">
+				{% include "Components/Article/_filter.html.twig" %}
+			</div>
+			<div class="col-md-9">
+				{% include "Components/Article/_articles.html.twig" with {articles: articles} only %}
+			</div>
+		</div>
+	</section>
+{% endblock %}
