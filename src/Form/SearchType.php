@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Data\SearchData;
 use App\Entity\Categorie;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,6 +25,10 @@ class SearchType extends AbstractType
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->andWhere('c.active = true');
+                },
                 'label' => false,
                 'required' => false,
                 'choice_label' => 'titre',
@@ -39,5 +44,10 @@ class SearchType extends AbstractType
             'method' => 'GET',
             'csrf_protection' => false
         ]);
+    }
+
+    public function getBlockPrefix(): string
+    {
+        return '';
     }
 }

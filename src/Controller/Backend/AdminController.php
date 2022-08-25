@@ -95,7 +95,7 @@ class AdminController extends AbstractController
     #[Route('/article/delete/{id}', name: 'admin.article.delete', methods: 'DELETE|POST')]
     public function deleteArticle(int $id, Article $article, Request $request)
     {
-        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->get('_token'))) {
             $this->repoArticle->remove($article, true);
             $this->addFlash('success', 'Article supprimé avec succès');
 
@@ -105,6 +105,19 @@ class AdminController extends AbstractController
         $this->addFlash('error', 'Le token n\'est pas valide');
 
         return $this->redirectToRoute('admin');
+    }
+
+    #[Route('/article/switch/{id}', name: 'admin.article.switch', methods: ["GET"])]
+    public function switchVisibilityArticle(?Article $article)
+    {
+        if (!$article instanceof Article) {
+            return new Response('Categorie non trouvé', 404);
+        }
+
+        $article->setActive(!$article->isActive());
+        $this->repoArticle->add($article, true);
+
+        return new Response('Visibility changed', 201);
     }
 
     #[Route('/article/{id}-{slug}/comments', name: 'admin.article.comments')]

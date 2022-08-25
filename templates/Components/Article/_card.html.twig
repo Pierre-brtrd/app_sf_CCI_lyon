@@ -5,7 +5,7 @@
 		</div>
 	{% else %}
 		<div class="blog-card-image">
-			<img src="https://fakeimg.pl/200x100" alt="">
+			<img src="https://fakeimg.pl/200x200" alt="">
 		</div>
 	{% endfor %}
 	<div class="blog-card-content">
@@ -15,6 +15,9 @@
 		</p>
 		<h2 class="blog-card-content-header">{{ article.titre }}</h2>
 		<p class="blog-card-content-description">{{ article.content|striptags|slice(0, 100) ~ '...'}}</p>
+		{% for categorie in article.categories %}
+			<em class="text-muted">#{{ categorie.titre }}</em>
+		{% endfor %}
 		{% if article.user is not null %}
 			<div class="author">
 				{% if article.user.imageName %}
@@ -33,6 +36,10 @@
 			</div>
 		{% endif %}
 		{% if admin %}
+			<div class="form-check form-switch">
+				<input type="checkbox" class="form-check-input" value="{{ article.id }}" role="switch" data-switch-active-post {{ article.active ? 'checked' }}>
+				<label class="form-check-label">Actif</label>
+			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<a href="{{ path('admin.article.update', {'id': article.id, 'slug': article.slug} ) }}" class="btn btn-primary">Editer</a>
@@ -47,7 +54,7 @@
 			</div>
 			{% if article.comments|length > 0 %}
 				<div class="row">
-					<div class="col-md-4 mt-2">
+					<div class="col-md-12 mt-2">
 						<a href="{{ path('admin.article.comments', {'id': article.id, 'slug': article.slug}) }}" class="btn btn-info text-light">Commentaires</a>
 					</div>
 				</div>
