@@ -1,5 +1,3 @@
-<div class="blog-list">
-	{% for article in articles %}
-		{% include "Components/Article/_card.html.twig" with {admin: (admin is defined) ? admin : false } %}
-	{% endfor %}
-</div>
+{% for article in articles %}
+	{% include "Components/Article/_card.html.twig" with {admin: (admin is defined) ? admin : false } %}
+{% endfor %}

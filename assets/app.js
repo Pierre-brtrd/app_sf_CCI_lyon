@@ -11,5 +11,8 @@ import './styles/main.scss';
 // start the Stimulus application
 import './bootstrap';
 import './js/swiperArticle';
+import Filter from './js/filter';
+new Filter(document.querySelector('.js-filter'));
+
 require('bootstrap');
 

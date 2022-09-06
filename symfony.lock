@@ -98,6 +98,9 @@
             "fixtures/.gitignore"
         ]
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.8.0"
+    },
     "knplabs/knp-time-bundle": {
         "version": "v1.19.0"
     },

@@ -1,11 +1,11 @@
-<div class="blog-card">
-	{% for image in article.articleImages|slice(-1) %}
+<div class="blog-card" id="article-{{ article.id }}">
+	{% for image in article.articleImages|slice(0, 1) %}
 		<div class="blog-card-image">
 			<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ article.titre }}">
 		</div>
 	{% else %}
 		<div class="blog-card-image">
-			<img src="https://fakeimg.pl/200x200" alt="">
+			<img src="https://placekitten.com/350/240" alt="">
 		</div>
 	{% endfor %}
 	<div class="blog-card-content">
