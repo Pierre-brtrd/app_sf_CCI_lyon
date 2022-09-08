@@ -79,8 +79,7 @@ jobs:
         run: vendor/bin/requirements-checker
 
       - name: Check the Symfony console
-        run: |
-          bin/console about
+        run: bin/console about
 
       ## —— Coding standards ✨ ————————————————————————————————————————————————
       - name: Coding standards checks (php_codesniffer + php-cs-fixer)
