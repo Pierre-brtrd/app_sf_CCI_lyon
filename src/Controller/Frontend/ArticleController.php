@@ -2,20 +2,20 @@
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Article;
 use App\Data\SearchData;
+use App\Entity\Article;
 use App\Entity\Comments;
-use App\Form\SearchType;
 use App\Form\CommentsType;
+use App\Form\SearchType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/article')]
 class ArticleController extends AbstractController
@@ -34,16 +34,16 @@ class ArticleController extends AbstractController
         if ($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('Components/Article/_articles.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'sorting' => $this->renderView('Components/Article/_sorting.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'pagination' => $this->renderView('Components/Article/_pagination.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'count' => $this->renderView('Components/Article/_count.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'pages' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage()),
             ]);
@@ -51,7 +51,7 @@ class ArticleController extends AbstractController
 
         return $this->renderForm('Frontend/Article/index.html.twig', [
             'articles' => $articles,
-            'form' => $form
+            'form' => $form,
         ]);
     }
 

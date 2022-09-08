@@ -11,7 +11,7 @@ class SearchData
     private ?array $categories = [];
 
     /**
-     * Get the value of page
+     * Get the value of page.
      *
      * @return ?int
      */
@@ -21,11 +21,9 @@ class SearchData
     }
 
     /**
-     * Set the value of page
+     * Set the value of page.
      *
      * @param ?int $page
-     *
-     * @return self
      */
     public function setPage(?int $page): self
     {
@@ -35,7 +33,7 @@ class SearchData
     }
 
     /**
-     * Get the value of query
+     * Get the value of query.
      *
      * @return ?string
      */
@@ -45,11 +43,9 @@ class SearchData
     }
 
     /**
-     * Set the value of query
+     * Set the value of query.
      *
      * @param ?string $query
-     *
-     * @return self
      */
     public function setQuery(?string $query): self
     {
@@ -59,7 +55,7 @@ class SearchData
     }
 
     /**
-     * Get the value of categories
+     * Get the value of categories.
      *
      * @return ?array
      */
@@ -69,11 +65,9 @@ class SearchData
     }
 
     /**
-     * Set the value of categories
+     * Set the value of categories.
      *
      * @param ?array $categories
-     *
-     * @return self
      */
     public function setCategories(?array $categories): self
     {

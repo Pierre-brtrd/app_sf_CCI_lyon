@@ -1,6 +1,8 @@
 {{ form_start(form) }}
 
+{{ form_errors(form.titre) }}
 {{ form_widget(form.titre, {'attr': {'class': 'mb-4', 'placeholder': "Titre de l'article"} }) }}
+
 {{ form_row(form.categories) }}
 <div class="row mb-4">
 	<div class="col-md-12">
@@ -19,6 +21,7 @@
 		<button type="button" class="btn btn-primary add-another-collection-widget" data-list-selector="#image-fields-list">Ajouter une image</button>
 	</div>
 </div>
+{{ form_errors(form.content) }}
 {{ form_widget(form.content, {'attr': {'class': 'mb-4', 'placeholder': "Contenu de l'article", 'rows': 20} }) }}
 <div class="mt-4 text-center">
 	<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>

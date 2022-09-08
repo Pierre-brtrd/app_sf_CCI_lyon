@@ -95,7 +95,7 @@ class AdminController extends AbstractController
     #[Route('/article/delete/{id}', name: 'admin.article.delete', methods: 'DELETE|POST')]
     public function deleteArticle(int $id, Article $article, Request $request)
     {
-        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->get('_token'))) {
             $this->repoArticle->remove($article, true);
             $this->addFlash('success', 'Article supprimé avec succès');
 
@@ -107,7 +107,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
-    #[Route('/article/switch/{id}', name: 'admin.article.switch', methods: ["GET"])]
+    #[Route('/article/switch/{id}', name: 'admin.article.switch', methods: ['GET'])]
     public function switchVisibilityArticle(?Article $article)
     {
         if (!$article instanceof Article) {

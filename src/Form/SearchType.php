@@ -20,8 +20,8 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Rechercher par nom'
-                ]
+                    'placeholder' => 'Rechercher par nom',
+                ],
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
@@ -43,7 +43,7 @@ class SearchType extends AbstractType
             'data_class' => SearchData::class,
             'method' => 'GET',
             'csrf_protection' => false,
-            'validation_groups' => false
+            'validation_groups' => false,
         ]);
     }
 

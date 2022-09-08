@@ -45,10 +45,7 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * Find latest post with a limit
-     *
-     * @param integer $limit
-     * @return array
+     * Find latest post with a limit.
      */
     public function findLatestArticleWithLimit(int $limit): array
     {
